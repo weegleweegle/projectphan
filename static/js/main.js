@@ -91,12 +91,12 @@ const App = (function() {
     function handleAlgorithmChange(event) {
         selectedAlgorithm = event.target.value;
 
-        // If paused or running, stop and reset to allow fresh start with new algorithm
+        // Stop any running sort and reset chart for fresh start
         if (isRunning || isPaused) {
             stop();
-            Chart.reset();
-            Metrics.reset();
         }
+        Chart.reset();
+        Metrics.reset();
 
         // Enable/disable play button based on selection
         playBtn.disabled = !selectedAlgorithm;
@@ -219,13 +219,8 @@ const App = (function() {
      */
     function handleComplete() {
         Metrics.stopTimer();
-
-        // Brief delay before reset
-        setTimeout(() => {
-            stop();
-            Chart.reset();
-            Metrics.reset();
-        }, 2000);
+        stop();
+        // Keep sorted state visible until user selects another algorithm
     }
 
     /**
