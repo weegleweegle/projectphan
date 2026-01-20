@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sorting Algorithm Visualizer</title>
+    <link rel="stylesheet" href="static/css/styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <header class="header">
+            <h1>Sorting Algorithm Visualizer</h1>
+        </header>
+
+        <main class="main">
+            <!-- Loading State -->
+            <div id="loading-container" class="loading-container hidden">
+                <div class="progress-bar">
+                    <div class="progress-bar-indeterminate"></div>
+                </div>
+                <p>Loading data...</p>
+            </div>
+
+            <!-- Error State -->
+            <div id="error-container" class="error-container hidden">
+                <p class="error-message">Failed to load data. Please try again.</p>
+                <button id="retry-btn" class="btn btn-retry">Retry</button>
+            </div>
+
+            <!-- Chart Container -->
+            <div id="chart-container" class="chart-container">
+                <div id="chart" class="chart"></div>
+            </div>
+        </main>
+
+        <section class="controls">
+            <select id="algorithm-select" class="algorithm-select">
+                <option value="">Select Algorithm</option>
+                <option value="bubble">Bubble Sort</option>
+                <option value="selection">Selection Sort</option>
+                <option value="insertion">Insertion Sort</option>
+                <option value="merge">Merge Sort</option>
+                <option value="quick">Quick Sort</option>
+                <option value="heap">Heap Sort</option>
+            </select>
+            <div class="btn-group">
+                <button id="play-btn" class="btn btn-play" disabled>Play</button>
+                <button id="pause-btn" class="btn btn-pause hidden">Pause</button>
+            </div>
+        </section>
+
+        <section class="metrics">
+            <div class="metric">
+                <span class="metric-label">Comparisons</span>
+                <span id="comparisons" class="metric-value">0</span>
+            </div>
+            <div class="metric">
+                <span class="metric-label">Swaps</span>
+                <span id="swaps" class="metric-value">0</span>
+            </div>
+            <div class="metric">
+                <span class="metric-label">Time</span>
+                <span id="time" class="metric-value">0.00s</span>
+            </div>
+        </section>
+    </div>
+
+    <script src="static/js/chart.js"></script>
+    <script src="static/js/metrics.js"></script>
+    <script src="static/js/algorithms/bubbleSort.js"></script>
+    <script src="static/js/algorithms/selectionSort.js"></script>
+    <script src="static/js/algorithms/insertionSort.js"></script>
+    <script src="static/js/algorithms/mergeSort.js"></script>
+    <script src="static/js/algorithms/quickSort.js"></script>
+    <script src="static/js/algorithms/heapSort.js"></script>
+    <script src="static/js/main.js"></script>
+</body>
+</html>

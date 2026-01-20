@@ -1,0 +1,347 @@
+/* CSS Reset */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Color Palette */
+:root {
+    --color-coral: #f79256;
+    --color-peach: #fbd1a2;
+    --color-mint: #7dcfb6;
+    --color-cyan: #00b2ca;
+    --color-navy: #1d4e89;
+    --color-bg: #121212;
+    --color-bg-light: #1e1e1e;
+    --color-bg-lighter: #2d2d2d;
+    --color-text: #e0e0e0;
+    --color-text-muted: #888888;
+    --color-error: #ff6b6b;
+}
+
+/* Base Styles */
+html, body {
+    height: 100%;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    line-height: 1.5;
+}
+
+/* App Container */
+.app-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+/* Header */
+.header {
+    text-align: center;
+    padding: 1rem 0;
+}
+
+.header h1 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--color-text);
+}
+
+/* Main Content */
+.main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 300px;
+}
+
+/* Loading State */
+.loading-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    padding: 2rem;
+}
+
+.progress-bar {
+    width: 200px;
+    height: 4px;
+    background-color: var(--color-bg-lighter);
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.progress-bar-indeterminate {
+    width: 40%;
+    height: 100%;
+    background: linear-gradient(90deg, var(--color-cyan), var(--color-mint));
+    border-radius: 2px;
+    animation: indeterminate 1.5s ease-in-out infinite;
+}
+
+@keyframes indeterminate {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(350%);
+    }
+}
+
+/* Error State */
+.error-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    padding: 2rem;
+}
+
+.error-message {
+    color: var(--color-error);
+    font-size: 1rem;
+}
+
+/* Chart Container */
+.chart-container {
+    flex: 1;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding: 1rem 0;
+    min-height: 250px;
+    height: 300px;
+}
+
+.chart {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 1px;
+    width: 100%;
+    height: 250px;
+}
+
+.bar {
+    flex: 1;
+    min-width: 2px;
+    max-width: 20px;
+    background-color: var(--color-navy);
+    border-radius: 2px 2px 0 0;
+    transition: height 0.05s ease-out, background-color 0.1s ease;
+}
+
+/* Bar States */
+.bar.comparing {
+    background-color: var(--color-peach);
+}
+
+.bar.swapping {
+    background-color: var(--color-coral);
+}
+
+.bar.sorted {
+    background-color: var(--color-mint);
+}
+
+.bar.pivot {
+    background-color: var(--color-cyan);
+}
+
+/* Controls */
+.controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    padding: 1rem 0;
+    flex-wrap: wrap;
+}
+
+.algorithm-select {
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    background-color: var(--color-bg-light);
+    color: var(--color-text);
+    border: 1px solid var(--color-bg-lighter);
+    border-radius: 6px;
+    cursor: pointer;
+    min-width: 180px;
+}
+
+.algorithm-select:focus {
+    outline: none;
+    border-color: var(--color-cyan);
+}
+
+.algorithm-select option {
+    background-color: var(--color-bg-light);
+    color: var(--color-text);
+}
+
+.btn-group {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.btn {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 500;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, opacity 0.2s ease;
+    min-width: 100px;
+    min-height: 44px;
+}
+
+.btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.btn-play {
+    background-color: var(--color-mint);
+    color: var(--color-bg);
+}
+
+.btn-play:hover:not(:disabled) {
+    background-color: #6bc4a6;
+}
+
+.btn-pause {
+    background-color: var(--color-coral);
+    color: var(--color-bg);
+}
+
+.btn-pause:hover:not(:disabled) {
+    background-color: #e58347;
+}
+
+.btn-retry {
+    background-color: var(--color-cyan);
+    color: var(--color-bg);
+}
+
+.btn-retry:hover {
+    background-color: #009db3;
+}
+
+/* Metrics */
+.metrics {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    padding: 1rem 0;
+    flex-wrap: wrap;
+}
+
+.metric {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.metric-label {
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.metric-value {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--color-cyan);
+    font-variant-numeric: tabular-nums;
+}
+
+/* Utility Classes */
+.hidden {
+    display: none !important;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .header h1 {
+        font-size: 1.25rem;
+    }
+
+    .chart-container {
+        min-height: 200px;
+    }
+
+    .chart {
+        min-height: 150px;
+    }
+
+    .controls {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    .algorithm-select {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .btn-group {
+        width: 100%;
+        max-width: 300px;
+        justify-content: center;
+    }
+
+    .btn {
+        flex: 1;
+    }
+
+    .metrics {
+        gap: 1.5rem;
+    }
+}
+
+@media (max-width: 375px) {
+    .app-container {
+        padding: 0.5rem;
+    }
+
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .metrics {
+        gap: 1rem;
+    }
+
+    .metric-value {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 320px) {
+    .bar {
+        max-width: 8px;
+    }
+
+    .metrics {
+        gap: 0.75rem;
+    }
+
+    .metric-label {
+        font-size: 0.65rem;
+    }
+
+    .metric-value {
+        font-size: 0.9rem;
+    }
+}
