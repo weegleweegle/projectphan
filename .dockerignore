@@ -1,0 +1,9 @@
+.git
+.github
+Prompts
+tasks
+data
+*.md
+Procfile
+railway.json
+__pycache__

@@ -1,0 +1,5 @@
+apiVersion: picopaas/v1
+name: projectphan
+image: ghcr.io/weegleweegle/projectphan:latest
+port: 8080
+healthCheck: { enabled: true, path: / }
